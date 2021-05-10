@@ -1,0 +1,60 @@
+:root {
+    --hueRotate: 0deg;
+    --invertPercent: 0%;
+}
+
+body {
+    background: tomato;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    overflow: hidden;
+    /* flex-direction: row; */
+}
+.wrapper{
+    filter: invert(var(--invertPercent));
+    
+}
+#canvas1{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    justify-self: center;
+    align-self: center;
+    background: #32324b;
+    filter: hue-rotate(var(--hueRotate));
+    
+    /* filter: hue-rotate(108deg); */
+    /* filter: url('#goo'); */
+    
+}
+
+
+.controls{
+    width: auto;
+    padding: 0.5em;
+    display: flex;
+    flex-flow: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #ffffff90;
+    z-index: 3;
+    border-bottom-right-radius: 30px;
+}
+.controls > span{
+    width: 100%;
+    align-self: flex-start;
+    display: flex;
+    flex-flow:row;
+    justify-content: space-between;
+}
+.controls > span :nth-child(2){
+    align-self: flex-end;
+}
+#settings1{
+    z-index: 4;
+    position: absolute;
+    top:3px ;
+    left: 3px;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="settings1"><button id="toggle" onclick="hide('controls');">⚙️Controles</button></div>
+       
+    <div class ="controls" id="controls" >
+        <br><hr>
+        <span >
+            <input type="range" value="5" min="1" max="10" id='DirX_vel' oninput="update_veloX(this.value,this.nextElementSibling.id);">
+            Velocidad</input>
+            <input type="text" id="DirX_vel_display" value="5" size="2" disabled >
+        </span>
+        <span>
+            <input type="range" value="0" min="0" max="180" id='hue' oninput="update_hue(this.value,this.nextElementSibling.id);">
+            Hue</input>
+            <input type="text" id="hue_display" value="0" size="2" disabled >
+        </span>
+        <span>
+            <input type="range" value="0" min="0" max="100" id='invert' oninput="update_invert(this.value,this.nextElementSibling.id);">
+            Invert</input>
+            <input type="text" id="invert_display" value="0" size="2" disabled >
+        </span>
+        
+    </div>
+    <div class="wrapper">
+        <canvas id="canvas1"></canvas>
+    </div>
+    
+    <script src="plx.js"></script>
+    <script>
+        function hide(e){
+            
+            let x = document.getElementById(e);
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                  }
+            }
+
+        
+    </script>
+
+    <svg>
+        <defs>
+            <filter id ='goo' >
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"/>
+                <feColorMatrix in="blur" mode="matrix" 
+                values="1 0 0 0 0
+                        0 1 0 0 0
+                        0 0 1 0 0
+                        0 0 0 20 -9" result="goo"/>
+                <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+            </filter>
+        </defs>
+    </svg>
+</body>
+</html>
